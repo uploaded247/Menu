@@ -74,17 +74,38 @@ const menu = [
 ]
 
 const sectionCenter = document.querySelector(".section-center");
-const filterBtns = document.querySelectorAll(".filter-btn")
+const filterBtns = document.querySelectorAll(".filter-btn");
+// const buttons = document.querySelectorAll(".filter-btn");
 
 window.addEventListener("DOMContentLoaded", function () {
     displayMenuItems(menu)
-}); 
+});
 
 // filtter btn
+
 filterBtns.forEach(function (btn) {
+
+
     btn.addEventListener("click", function (e) {
         const category = e.currentTarget.dataset.id;
+        console.log(btn)
+
+
+        filterBtns.forEach(function (bt) {
+
+            if (bt === btn) {
+
+                bt.classList.add('active')
+            } else {
+                bt.classList.remove('active')
+
+            }
+        })
+        // if the current category is equal the data-id make the background of the button to match the hover color else keep it to default.
+
+
         const menuCategory = menu.filter(function (menuItem) {
+
             if (menuItem.category === category) {
                 return menuItem;
             }
